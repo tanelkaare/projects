@@ -9,4 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>TVKavaServlet</servlet-name>
+    <servlet-class>ee.tanker.tvkava.KavaDisplay</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TVKavaServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 </web-app>

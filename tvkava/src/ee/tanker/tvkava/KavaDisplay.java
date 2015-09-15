@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class KavaReader
+ * Servlet implementation class KavaDisplay
  */
-@WebServlet("/KavaReader")
-public class KavaReader extends HttpServlet {
+@WebServlet("/KavaDisplay")
+public class KavaDisplay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public KavaReader() {
+    public KavaDisplay() {
         // TODO Auto-generated constructor stub
     }
 
