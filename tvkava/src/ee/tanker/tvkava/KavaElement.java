@@ -1,7 +1,10 @@
 package ee.tanker.tvkava;
 
 public class KavaElement {
-
+	
+	String titleEst;
+	String time;
+	String test;
 	/**
 	 * @param args
 	 */
