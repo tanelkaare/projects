@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
+import org.apache.commons.lang.StringEscapeUtils;
 
 public class KavaReader {
 	KavaElement[] kavaElement;
@@ -17,12 +18,20 @@ public class KavaReader {
 		// TODO Auto-generated method stub
 
 	}
-	public void collectElements(String date, String channel) throws IOException{
+	public void collectElements(String url, String channel) throws IOException{
 		//kas see meetod peaks olema KavaElement klassis?
 		kavaElement = new KavaElement[100];
-		Document kavaLeht = Jsoup.connect("http://m.kava.delfi.ee/tvguide/fe/service.php?action=load_m_channel_events&t=m_guide_content&language_id=112&id=13&date=20150917").get();
-		Elements kavaList = kavaLeht.select("li[class=event]");
-		test = "sain kokku " + kavaList.size();
+		Document kavaLeht = Jsoup.connect(url).get();
+		String htmlData = kavaLeht.html();
+		//Document kavaLeht = Jsoup.parseBodyFragment(bodyHtml, baseUri)
+		//Elements kavaList = kavaLeht.select("li[class=event]");
+		htmlData = StringEscapeUtils.unescapeJava(htmlData);
+		//htmlData = StringEscapeUtils.unescapeHtml(htmlData);
+		//htmlData = StringEscapeUtils.unescapeXml(htmlData);
+		test = htmlData;
+		kavaLeht = Jsoup.parse(htmlData);
+		Elements kavaList = kavaLeht.select("li");
+		test =  test + "\nsain kokku " + kavaList.size();
 		int count = 0;
 		for (Element kavaItem: kavaList){
 			kavaElement[count] = new KavaElement();
