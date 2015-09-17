@@ -16,7 +16,7 @@ public class KavaCLI {
 		KavaReader kReader = new KavaReader();
 		//response.setContentType("text/html");
 		
-		kReader.collectElements("http://m.kava.delfi.ee/tvguide/fe/service.php?action=load_m_channel_events&t=m_guide_content&language_id=112&id=13&date=20150917", "b");
+		kReader.collectElements("http://m.kava.delfi.ee/tvguide/fe/service.php?action=load_m_channel_events&t=m_guide_content&language_id=112&id=13&date=20150918", "b");
 		//kReader.collectElements("http://m.kava.delfi.ee/kava/","b");
 		System.out.println("sisu:");
 		System.out.println(kReader.test);

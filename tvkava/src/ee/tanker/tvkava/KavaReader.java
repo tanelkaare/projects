@@ -26,19 +26,21 @@ public class KavaReader {
 		//Document kavaLeht = Jsoup.parseBodyFragment(bodyHtml, baseUri)
 		//Elements kavaList = kavaLeht.select("li[class=event]");
 		htmlData = StringEscapeUtils.unescapeJava(htmlData);
-		//htmlData = StringEscapeUtils.unescapeHtml(htmlData);
-		//htmlData = StringEscapeUtils.unescapeXml(htmlData);
+		htmlData = htmlData.replace("&quot;", "");
+		htmlData = StringEscapeUtils.unescapeHtml(htmlData);
 		test = htmlData;
 		kavaLeht = Jsoup.parse(htmlData);
-		Elements kavaList = kavaLeht.select("li");
-		test =  test + "\nsain kokku " + kavaList.size();
+		Elements kavaList = kavaLeht.select("li[class=event]");
+		//test =  test + "\nsain kokku " + kavaList.size();
 		int count = 0;
 		for (Element kavaItem: kavaList){
-			kavaElement[count] = new KavaElement();
-			//kavaElement[count].test = kavaItem.html();
-			kavaElement[count].time = kavaItem.select("span[class]").first().html();
-			kavaElement[count].titleEst = kavaItem.select("span[class]").last().html();
+			if ((!kavaItem.select("span[class=type]").isEmpty()) && (kavaItem.select("span[class=type]").first().text() == "Film")){
+				kavaElement[count] = new KavaElement();
+				//kavaElement[count].test = kavaItem.html();
+				kavaElement[count].time = kavaItem.select("span[class=time]").first().html();
+				kavaElement[count].titleEst = kavaItem.select("span[class=event-title]").first().html();
 			count++;
+			}
 		}
 	}
 }
